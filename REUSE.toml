@@ -1,0 +1,326 @@
+# © 2024 Carl Åstholm
+# SPDX-License-Identifier: MIT
+
+# REUSE <https://reuse.software/>
+version = 1
+
+# ALSA_LIB
+
+[[annotations]]
+path = "include/alsa/**"
+SPDX-FileCopyrightText = [
+    "1998-2001 Jaroslav Kysela <perex@perex.cz>",
+    "1998-2001 Abramo Bagnara <abramo@alsa-project.org>",
+    "1998-2001 Takashi Iwai <tiwai@suse.de>"
+] # From file header comments
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
+path = [
+    "include/alsa/pcm_old.h",
+    "include/alsa/ump.h",
+    "include/alsa/version.h",
+]
+SPDX-FileCopyrightText = "NONE" # No copyright notice
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
+path = "include/alsa/ump.h"
+precedence = "override" # Override deprecated 'LGPL-2.1+' identifier
+SPDX-FileCopyrightText = "NONE" # No copyright notice
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+# DBUS
+
+[[annotations]]
+path = [
+    "include/dbus/**",
+    "include/x86_64-linux-gnu/dbus/**",
+]
+SPDX-License-Identifier = "AFL-2.1 OR GPL-2.0-or-later"
+
+# DRM
+
+[[annotations]]
+path = [
+    "include/drm.h",
+    "include/drm_mode.h",
+    "include/xf86drm.h",
+    "include/xf86drmMode.h",
+]
+SPDX-License-Identifier = "MIT"
+
+# GLIB
+
+[[annotations]]
+path = [
+    "include/gio/gio-visibility.h",
+    "include/glib/deprecated/gallocator.h",
+    "include/glib/glib-visibility.h",
+    "include/gmodule/gmodule-visibility.h",
+    "include/gobject/glib-enumtypes.h",
+    "include/gobject/gmarshal.h",
+    "include/gobject/gobject-visibility.h",
+    "include/x86_64-linux-gnu/glibconfig.h",
+]
+SPDX-FileCopyrightText = "NONE" # No copyright notice
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
+path = "include/glib/gsequence.h"
+precedence = "override" # Copyright notice present in file but spans multiple lines
+SPDX-FileCopyrightText = "Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007 Soeren Sandmann (sandmann@daimi.au.dk)"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
+path = "include/glib/guuid.h"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+# IBUS
+
+[[annotations]]
+path = "include/ibus*.h"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+[[annotations]]
+path = "include/ibusenumtypes.h"
+SPDX-FileCopyrightText = "NONE" # No copyright notice
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+# JACK1
+
+[[annotations]]
+path = "include/jack/**"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+# LIBDECOR
+
+[[annotations]]
+path = "include/libdecor.h"
+SPDX-License-Identifier = "MIT"
+
+# LIBX11
+
+[[annotations]]
+path = "include/X11/XKBlib.h"
+SPDX-License-Identifier = "HPND"
+
+[[annotations]]
+path = [
+    "include/X11/Xlib.h",
+    "include/X11/Xlibint.h",
+    "include/X11/cursorfont.h",
+]
+SPDX-License-Identifier = "MIT-open-group"
+
+[[annotations]]
+path = "include/X11/XlibConf.h"
+SPDX-License-Identifier = "HPND-sell-variant"
+
+[[annotations]]
+path = [
+    "include/X11/Xresource.h",
+    "include/X11/Xutil.h",
+]
+SPDX-License-Identifier = "MIT-open-group AND HPND"
+
+# LIBXCB
+
+[[annotations]]
+path = "include/xcb/xcb.h"
+SPDX-License-Identifier = "X11"
+
+# LIBUSB
+
+[[annotations]]
+path = "include/libusb.h"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+# LIBXCURSOR
+
+[[annotations]]
+path = "include/X11/Xcursor/Xcursor.h"
+SPDX-License-Identifier = "HPND-sell-variant"
+
+# LIBXEXT
+
+[[annotations]]
+path = [
+    "include/X11/extensions/XShm.h",
+    "include/X11/extensions/Xext.h",
+    "include/X11/extensions/shape.h",
+]
+SPDX-License-Identifier = "MIT-open-group"
+
+[[annotations]]
+path = "include/X11/extensions/Xdbe.h"
+SPDX-License-Identifier = "X11"
+
+[[annotations]]
+path = "include/X11/extensions/Xge.h"
+SPDX-License-Identifier = "MIT"
+
+# LIBXFIXES
+
+[[annotations]]
+path = "include/X11/extensions/Xfixes.h"
+SPDX-License-Identifier = "MIT AND HPND-sell-variant"
+
+# LIBXI
+
+[[annotations]]
+path = "include/X11/extensions/XInput2.h"
+SPDX-License-Identifier = "MIT"
+
+# LIBXKBCOMMON
+
+[[annotations]]
+path = "include/xkbcommon/xkbcommon.h"
+SPDX-License-Identifier = "X11 AND HPND AND MIT"
+
+[[annotations]]
+path = [
+    "include/xkbcommon/xkbcommon-compat.h",
+    "include/xkbcommon/xkbcommon-compose.h",
+    "include/xkbcommon/xkbcommon-names.h",
+]
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "include/xkbcommon/xkbcommon-keysyms.h"
+SPDX-License-Identifier = "MIT-open-group AND HPND"
+
+# LIBXRANDR
+
+[[annotations]]
+path = "include/X11/extensions/Xrandr.h"
+SPDX-License-Identifier = "HPND-sell-variant"
+
+# LIBXRENDER
+
+[[annotations]]
+path = "include/X11/extensions/Xrender.h"
+SPDX-License-Identifier = "HPND-sell-variant"
+
+# LIBXSCRNSAVER
+
+[[annotations]]
+path = "include/X11/extensions/scrnsaver.h"
+SPDX-License-Identifier = "X11"
+
+# MESA
+
+[[annotations]]
+path = [
+    "include/GL/**",
+    "include/gbm.h",
+]
+SPDX-License-Identifier = "MIT"
+
+# PULSEAUDIO
+
+[[annotations]]
+path = "include/pulse/**"
+SPDX-License-Identifier = "LGPL-2.1-or-later"
+
+# SDL
+
+[[annotations]]
+path = "src/*-protocol.*"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "src/tablet-v2-client-protocol.h"
+SPDX-FileCopyrightText = [
+    "Copyright 2014 © Stephen \"Lyude\" Chandler Paul",
+    "Copyright 2015-2016 © Red Hat, Inc.",
+] # Copyright notices present in file but not picked up by reuse
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "src/text-input-unstable-v3-*"
+SPDX-License-Identifier = "HPND-sell-variant"
+
+# SNDIO
+
+[[annotations]]
+path = "include/sndio.h"
+SPDX-License-Identifier = "ISC"
+
+# SYSTEMD
+
+[[annotations]]
+path = "include/libudev.h"
+SPDX-FileCopyrightText = "NONE" # No copyright notice
+
+# WAYLAND
+
+[[annotations]]
+path = "include/wayland-*.h"
+SPDX-License-Identifier = "MIT"
+
+# XCBPROTO
+
+[[annotations]]
+path = "include/xcb/xproto.h"
+SPDX-FileCopyrightText = "Copyright (C) 2001-2004 Bart Massey, Jamey Sharp, and Josh Triplett." # From XML protocol
+SPDX-License-Identifier = "X11"
+
+# XORGPROTO
+
+[[annotations]]
+path = [
+    "include/X11/X.h",
+    "include/X11/Xmd.h",
+    "include/X11/Xproto.h",
+    "include/X11/Xprotostr.h",
+    "include/X11/keysym.h",
+    "include/X11/keysymdef.h",
+]
+SPDX-License-Identifier = "MIT-open-group AND HPND"
+
+[[annotations]]
+path = "include/X11/Xatom.h"
+SPDX-FileCopyrightText = "NONE" # No copyright notice
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+    "include/X11/Xdefs.h",
+    "include/X11/Xfuncproto.h",
+    "include/X11/Xfuncs.h",
+    "include/X11/Xosdefs.h",
+    "include/X11/Xthreads.h",
+    "include/X11/extensions/shapeconst.h",
+    "include/X11/extensions/shm.h",
+]
+SPDX-License-Identifier = "MIT-open-group"
+
+[[annotations]]
+path = "include/X11/extensions/XI2.h"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+    "include/X11/extensions/XKB.h",
+    "include/X11/extensions/XKBstr.h",
+]
+SPDX-License-Identifier = "HPND"
+
+[[annotations]]
+path = [
+    "include/X11/extensions/dbe.h",
+    "include/X11/extensions/saver.h",
+]
+SPDX-License-Identifier = "X11"
+
+[[annotations]]
+path = [
+    "include/X11/extensions/randr.h",
+    "include/X11/extensions/render.h",
+]
+SPDX-License-Identifier = "HPND-sell-variant"
+
+[[annotations]]
+path = "include/X11/extensions/xfixeswire.h"
+SPDX-License-Identifier = "MIT AND HPND-sell-variant"
