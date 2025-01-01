@@ -763,6 +763,10 @@ core() {
 		-e "s/@DBUS_VERSION@/$version/g" \
 	> include/x86_64-linux-gnu/dbus/dbus-arch-deps.h
 
+	# aarch64 config is identical to x86_64
+	mkdir -p include/aarch64-linux-gnu/dbus
+	cp include/x86_64-linux-gnu/dbus/dbus-arch-deps.h include/aarch64-linux-gnu/dbus/
+
 	repo_ensure_cloned IBUS
 
 	headers=(
@@ -996,6 +1000,10 @@ core() {
 		-e 's/@g_searchpath_separator@/:/g' \
 		-e 's/#mesondefine G_HAVE_FREE_SIZED/#undef G_HAVE_FREE_SIZED/' \
 	> include/x86_64-linux-gnu/glibconfig.h
+
+	# aarch64 config is identical to x86_64 sans G_VA_COPY_AS_ARRAY
+	mkdir -p include/aarch64-linux-gnu
+	grep -v '^#define G_VA_COPY_AS_ARRAY 1$' include/x86_64-linux-gnu/glibconfig.h > include/aarch64-linux-gnu/glibconfig.h
 
 	mkdir -p include/glib
 	"$GLIB_DIR/tools/gen-visibility-macros.py" "$version" visibility-macros \

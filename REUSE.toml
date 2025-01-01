@@ -45,6 +45,7 @@ SPDX-License-Identifier = "MIT"
 
 [[annotations]]
 path = [
+    "include/aarch64-linux-gnu/glibconfig.h",
     "include/gio/gio-visibility.h",
     "include/glib/deprecated/gallocator.h",
     "include/glib/glib-visibility.h",
