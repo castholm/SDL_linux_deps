@@ -2,6 +2,7 @@
 /* dbus-arch-deps.h Header with architecture/compiler specific information, installed to libdir
  *
  * Copyright (C) 2003 Red Hat, Inc.
+ * SPDX-License-Identifier: AFL-2.0 OR GPL-2.0-or-later
  *
  * Licensed under the Academic Free License version 2.0
  * 
@@ -35,6 +36,7 @@ DBUS_BEGIN_DECLS
 #define DBUS_HAVE_INT64 1
 _DBUS_GNUC_EXTENSION typedef long dbus_int64_t;
 _DBUS_GNUC_EXTENSION typedef unsigned long dbus_uint64_t;
+#define DBUS_INT64_MODIFIER "l"
 
 #define DBUS_INT64_CONSTANT(val)  (_DBUS_GNUC_EXTENSION (val##L))
 #define DBUS_UINT64_CONSTANT(val) (_DBUS_GNUC_EXTENSION (val##UL))
@@ -45,16 +47,18 @@ typedef unsigned int dbus_uint32_t;
 typedef short dbus_int16_t;
 typedef unsigned short dbus_uint16_t;
 
+#define DBUS_SIZEOF_VOID_P 8
+
 /* This is not really arch-dependent, but it's not worth
  * creating an additional generated header just for this
  */
 #define DBUS_MAJOR_VERSION 1
-#define DBUS_MINOR_VERSION 14
-#define DBUS_MICRO_VERSION 10
+#define DBUS_MINOR_VERSION 16
+#define DBUS_MICRO_VERSION 0
 
-#define DBUS_VERSION_STRING "1.14.10"
+#define DBUS_VERSION_STRING "1.16.0"
 
-#define DBUS_VERSION ((1 << 16) | (14 << 8) | (10)) 
+#define DBUS_VERSION ((1 << 16) | (16 << 8) | (0)) 
 
 DBUS_END_DECLS
 

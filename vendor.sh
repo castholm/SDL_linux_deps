@@ -9,13 +9,13 @@ ALSA_LIB_URL=https://github.com/alsa-project/alsa-lib.git
 ALSA_LIB_REV=785fd327ada6fc1778a2bb21176cb66705eb6b33 # v1.2.13
 
 DBUS_URL=https://gitlab.freedesktop.org/dbus/dbus.git
-DBUS_REV=fa05c11a0047f2927e76d08f9fcf6638ded7ff50 # dbus-1.14.10
+DBUS_REV=69e79b896a48ede68fb67b34719656a231c0647b # dbus-1.16.0
 
 DRM_URL=https://gitlab.freedesktop.org/mesa/drm.git
-DRM_REV=25dec5b91fe4d2638787d033a0b22b6c1dc145e0 # libdrm-2.4.123
+DRM_REV=38ec7dbd4df3141441afafe5ac62dfc9df36a77e # libdrm-2.4.124
 
 GLIB_URL=https://gitlab.gnome.org/GNOME/glib.git
-GLIB_REV=a429e56523f5b4565fe373a1138ccfd2d3d24f24 # 2.83.0
+GLIB_REV=ca20e4ac71864f08e980dc044ac96c06d5482b37 # 2.82.4
 
 IBUS_URL=https://github.com/ibus/ibus.git
 IBUS_REV=baeddb89a78d7ebb9eea384a07ea1af8bfa76e41 # 1.5.31
@@ -54,16 +54,16 @@ LIBXRANDR_URL=https://gitlab.freedesktop.org/xorg/lib/libxrandr.git
 LIBXRANDR_REV=512bf0b15b5597c721ff8c61083616ca9040fa72 # libXrandr-1.5.4
 
 LIBXRENDER_URL=https://gitlab.freedesktop.org/xorg/lib/libxrender.git
-LIBXRENDER_REV=e5e23272394c90731debd7e18dd167e8c25b5c15 # libXrender-0.9.11
+LIBXRENDER_REV=46e12ff9e8e4d3f0313a2f097df93dbfdc14f92f # libXrender-0.9.12
 
 LIBXSCRNSAVER_URL=https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver.git
 LIBXSCRNSAVER_REV=34f3f72b88c0a0a10d618e9dfbc88474ae5ce880 # libXScrnSaver-1.2.4
 
 MESA_URL=https://gitlab.freedesktop.org/mesa/mesa.git
-MESA_REV=3900828265aab07f31942fd0a8afe5b07e75c94b # mesa-24.2.7
+MESA_REV=e3b1a93aaa1d219014e715ea8a25a249ee2b6089 # mesa-24.3.2
 
 PIPEWIRE_URL=https://gitlab.freedesktop.org/pipewire/pipewire.git
-PIPEWIRE_REV=79eebcb72490484e25208971ca15b9e0ea25bd95 # 1.2.6
+PIPEWIRE_REV=cc7439187f61dd73b81ca69f5dbccbb52ce970b2 # 1.2.7
 
 PULSEAUDIO_URL=https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git
 PULSEAUDIO_REV=1f020889c9aa44ea0f63d7222e8c2b62c3f45f68 # v17.0
@@ -75,7 +75,7 @@ SNDIO_URL=https://github.com/ratchov/sndio.git
 SNDIO_REV=366b5c84d57c9ce73387c51ca48755d36e3fe3a7 # v1.10.0
 
 SYSTEMD_URL=https://github.com/systemd/systemd.git
-SYSTEMD_REV=a2240d1cf9f3515728186c2c98a6f4b64a40e4da # v256.8
+SYSTEMD_REV=47eea9ee9f46537bc18d6a64fa21fd9c50538e13 # v257.1
 
 WAYLAND_URL=https://gitlab.freedesktop.org/wayland/wayland.git
 WAYLAND_REV=a9fec8dd65977c57f4039ced34327204d9b9d779 # 1.23.1
@@ -159,7 +159,7 @@ wayland() {
 
 	generate() {
 		xml=$1
-		protocol_name="$(basename "$xml" .xml)"
+		protocol_name=$(basename "$xml" .xml)
 		mkdir -p src
 		wayland-scanner client-header "$xml" "src/$protocol_name-client-protocol.h"
 		wayland-scanner private-code "$xml" "src/$protocol_name-protocol.c"
@@ -429,7 +429,7 @@ pipewire() {
 
 	repo_copy PIPEWIRE src/pipewire/extensions/metadata.h include/pipewire/extensions
 
-	version=1.2.6
+	version=1.2.7
 	version_parts=(${version//./ })
 	api_version=0.3
 	mkdir -p include/pipewire
@@ -746,15 +746,17 @@ core() {
 	)
 	repo_copy DBUS "${headers[@]}" include/dbus
 
-	version=1.14.10
+	version=1.16.0
 	version_parts=(${version//./ })
 	mkdir -p include/x86_64-linux-gnu/dbus
 	sed "$DBUS_DIR/dbus/dbus-arch-deps.h.in" \
 		-e 's/@DBUS_INT64_TYPE@/long/g' \
+		-e 's/@DBUS_INT64_MODIFIER@/l/g' \
 		-e 's/@DBUS_INT64_CONSTANT@/(val##L)/g' \
 		-e 's/@DBUS_UINT64_CONSTANT@/(val##UL)/g' \
 		-e 's/@DBUS_INT32_TYPE@/int/g' \
 		-e 's/@DBUS_INT16_TYPE@/short/g' \
+		-e 's/@DBUS_SIZEOF_VOID_P@/8/g' \
 		-e "s/@DBUS_MAJOR_VERSION@/${version_parts[0]}/g" \
 		-e "s/@DBUS_MINOR_VERSION@/${version_parts[1]}/g" \
 		-e "s/@DBUS_MICRO_VERSION@/${version_parts[2]}/g" \
@@ -916,7 +918,7 @@ core() {
 	)
 	repo_copy GLIB "${headers[@]}" include/glib/deprecated
 
-	version=2.83.0
+	version=2.82.4
 	version_parts=(${version//./ })
 	mkdir -p include/x86_64-linux-gnu
 	sed "$GLIB_DIR/glib/glibconfig.h.in" \
