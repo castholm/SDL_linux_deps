@@ -91,6 +91,26 @@ SPDX-License-Identifier = "LGPL-2.1-or-later"
 path = "include/libdecor.h"
 SPDX-License-Identifier = "MIT"
 
+# LIBURING
+
+[[annotations]]
+path = [
+    "include/liburing/barrier.h",
+    "include/liburing/compat.h",
+    "include/liburing/io_uring_version.h",
+    "include/liburing.h",
+]
+SPDX-FileCopyrightText = "Copyright 2020 Jens Axboe" # From license
+
+[[annotations]]
+path = "include/liburing/io_uring.h"
+precedence = "override" # Override deprecated 'GPL-2.0' identifier
+SPDX-FileCopyrightText = [
+    "Copyright (C) 2019 Jens Axboe",
+    "Copyright (C) 2019 Christoph Hellwig",
+]
+SPDX-License-Identifier = "(GPL-2.0-only WITH Linux-syscall-note) OR MIT"
+
 # LIBUSB
 
 [[annotations]]
@@ -151,6 +171,15 @@ SPDX-License-Identifier = "X11"
 [[annotations]]
 path = "include/X11/extensions/Xge.h"
 SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "include/X11/extensions/sync.h"
+precedence = "override" # Copyright notice present in file but spans multiple lines
+SPDX-FileCopyrightText = [
+    "Copyright 1991, 1993, 1994, 1998  The Open Group",
+    "Copyright 1991,1993 by Digital Equipment Corporation, Maynard, Massachusetts, and Olivetti Research Limited, Cambridge, England.",
+]
+SPDX-License-Identifier = "MIT-open-group AND HPND"
 
 # LIBXFIXES
 
@@ -278,13 +307,13 @@ SPDX-License-Identifier = "MIT"
 
 [[annotations]]
 path = [
+    "include/X11/extensions/shapeconst.h",
+    "include/X11/extensions/shm.h",
     "include/X11/Xdefs.h",
     "include/X11/Xfuncproto.h",
     "include/X11/Xfuncs.h",
     "include/X11/Xosdefs.h",
     "include/X11/Xthreads.h",
-    "include/X11/extensions/shapeconst.h",
-    "include/X11/extensions/shm.h",
 ]
 SPDX-License-Identifier = "MIT-open-group"
 
@@ -312,6 +341,18 @@ path = [
     "include/X11/extensions/render.h",
 ]
 SPDX-License-Identifier = "HPND-sell-variant"
+
+[[annotations]]
+path = [
+    "include/X11/extensions/syncconst.h",
+    "include/X11/extensions/syncproto.h",
+]
+precedence = "override" # Copyright notice present in file but spans multiple lines
+SPDX-FileCopyrightText = [
+    "Copyright 1991, 1993, 1994, 1998  The Open Group",
+    "Copyright 1991,1993 by Digital Equipment Corporation, Maynard, Massachusetts, and Olivetti Research Limited, Cambridge, England.",
+]
+SPDX-License-Identifier = "MIT-open-group AND HPND"
 
 [[annotations]]
 path = "include/X11/extensions/xfixeswire.h"

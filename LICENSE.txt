@@ -1,5 +1,6 @@
 © 1984-1991, 1993-1994, 1998 The Open Group
 © 1987-1988 Digital Equipment Corporation, Maynard, Massachusetts
+© 1991, 1993 Digital Equipment Corporation, Maynard, Massachusetts, and Olivetti Research Limited, Cambridge, England
 © 1992 X Consortium
 © 1993 Silicon Graphics Computer Systems, Inc.
 © 1994-1995, 2002 Hewlett-Packard Company, Inc.
@@ -86,6 +87,8 @@
 © 2018, 2021 Igalia S.L.
 © 2018, 2023 Simon Ser
 © 2019 Christian Rauch
+© 2019 Christoph Hellwig
+© 2019-2020 Jens Axboe
 © 2020 Aleix Pol Gonzalez <aleixpol@kde.org>
 © 2020, 2023 Carlos Garnacho <carlosg@gnome.org>
 © 2021 Alexandros Theodotou
@@ -100,7 +103,7 @@
 © 2024 David Edmundson
 © 2024 Thomas E. Dickey
 
-SPDX-License-Identifier: ((AFL-2.0 AND AFL-2.1) OR GPL-2.0-or-later) AND HPND AND HPND-sell-variant AND ISC AND LGPL-2.1-or-later AND MIT AND MIT-open-group AND X11
+SPDX-License-Identifier: ((AFL-2.0 AND AFL-2.1) OR GPL-2.0-or-later) AND ((GPL-2.0-only WITH Linux-syscall-note) OR MIT) AND HPND AND HPND-sell-variant AND ISC AND LGPL-2.1-or-later AND MIT AND MIT-open-group AND X11
 
 ---
 
@@ -210,7 +213,7 @@ This license is Copyright (C) 2003-2004 Lawrence E. Rosen. All rights reserved. 
 
 ---
 
-GPL-2.0-or-later license text:
+GPL-2.0-only and GPL-2.0-or-later license text:
 
 GNU GENERAL PUBLIC LICENSE
 Version 2, June 1991
@@ -536,6 +539,16 @@ Yoyodyne, Inc., hereby disclaims all copyright interest in the library `Frob' (a
 Moe Ghoul, President of Vice
 
 That's all there is to it!
+
+---
+
+Linux-syscall-note text:
+
+NOTE! This copyright does *not* cover user programs that use kernel services by normal system calls - this is merely considered normal use of the kernel, and does *not* fall under the heading of "derived work". Also note that the GPL below is copyrighted by the Free Software Foundation, but the instance of code that it refers to (the Linux kernel) is copyrighted by me and others who actually wrote it.
+
+Also note that the only valid version of the GPL as far as the kernel is concerned is _this_ particular version of the license (ie v2, not v2.2 or v3.x or whatever), unless explicitly otherwise stated.
+
+Linus Torvalds
 
 ---
 

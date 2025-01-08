@@ -26,6 +26,9 @@ JACK1_REV=48b2d8a525b0082dded4a9d1d6137a2767962b2a # 0.126.0
 LIBDECOR_URL=https://gitlab.freedesktop.org/libdecor/libdecor.git
 LIBDECOR_REV=7807ae3480f5c6a37c5e8505d94af1e764aaf704 # 0.2.2
 
+LIBURING_URL=https://github.com/axboe/liburing.git
+LIBURING_REV=80272cbeb42bcd0b39a75685a50b0009b77cd380 # liburing-2.8
+
 LIBUSB_URL=https://github.com/libusb/libusb.git
 LIBUSB_REV=d52e355daa09f17ce64819122cb067b8a2ee0d4b # v1.0.27
 
@@ -69,7 +72,7 @@ PULSEAUDIO_URL=https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git
 PULSEAUDIO_REV=1f020889c9aa44ea0f63d7222e8c2b62c3f45f68 # v17.0
 
 SDL_URL=https://github.com/libsdl-org/SDL.git
-SDL_REV=78cc5c173404488d80751af226d1eaf67033bcc4 # preview-3.1.6
+SDL_REV=22422f7748d5128135995ed34c8f8012861c7332 # preview-3.1.8
 
 SNDIO_URL=https://github.com/ratchov/sndio.git
 SNDIO_REV=366b5c84d57c9ce73387c51ca48755d36e3fe3a7 # v1.10.0
@@ -296,6 +299,8 @@ x11() {
 		include/X11/extensions/saver.h
 		include/X11/extensions/shapeconst.h
 		include/X11/extensions/shm.h
+		include/X11/extensions/syncconst.h
+		include/X11/extensions/syncproto.h
 		include/X11/extensions/xfixeswire.h
 	)
 	repo_copy XORGPROTO "${headers[@]}" include/X11/extensions
@@ -322,6 +327,7 @@ x11() {
 		include/X11/extensions/Xext.h
 		include/X11/extensions/Xge.h
 		include/X11/extensions/shape.h
+		include/X11/extensions/sync.h
 	)
 	repo_copy LIBXEXT "${headers[@]}" include/X11/extensions
 
@@ -720,6 +726,58 @@ libusb() {
 	cat >> build.zig <<- 'EOF'
 		pub const libusb_soname = "libusb-1.0.so.0";
 	EOF
+}
+
+liburing() {
+	repo_ensure_cloned LIBURING
+
+	repo_copy LIBURING src/include/liburing.h include
+
+	headers=(
+		src/include/liburing/barrier.h
+		src/include/liburing/io_uring.h
+	)
+	repo_copy LIBURING "${headers[@]}" include/liburing
+
+	mkdir -p include/liburing
+	# REUSE-IgnoreStart
+	cat > include/liburing/compat.h <<- 'EOF'
+		/* SPDX-License-Identifier: MIT */
+		#ifndef LIBURING_COMPAT_H
+		#define LIBURING_COMPAT_H
+
+		#include <linux/time_types.h>
+		/* <linux/time_types.h> is included above and not needed again */
+		#define UAPI_LINUX_IO_URING_H_SKIP_LINUX_TIME_TYPES_H 1
+
+		#include <linux/openat2.h>
+
+
+		#include <linux/ioctl.h>
+
+		#ifndef BLOCK_URING_CMD_DISCARD
+		#define BLOCK_URING_CMD_DISCARD                        _IO(0x12, 0)
+		#endif
+
+		#endif
+	EOF
+	# REUSE-IgnoreEnd
+
+	version=2.8
+	version_parts=(${version//./ })
+	mkdir -p include/liburing
+	# REUSE-IgnoreStart
+	cat > include/liburing/io_uring_version.h <<- EOF
+		/* SPDX-License-Identifier: MIT */
+		#ifndef LIBURING_VERSION_H
+		#define LIBURING_VERSION_H
+
+		#define IO_URING_VERSION_MAJOR ${version_parts[0]}
+		#define IO_URING_VERSION_MINOR ${version_parts[1]}
+
+		#endif
+	EOF
+	# REUSE-IgnoreEnd
 }
 
 core() {
@@ -1248,6 +1306,7 @@ main() {
 	sndio
 	jack
 	libusb
+	liburing
 	core
 
 	rm -rf "$TMP_PREFIX"
