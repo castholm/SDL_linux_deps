@@ -8,6 +8,7 @@ pub const wayland_cursor_soname = "libwayland-cursor.so.0";
 pub const wayland_egl_soname = "libwayland-egl.so.1";
 pub const wayland_c_files = .{
     "src/alpha-modifier-v1-protocol.c",
+    "src/color-management-v1-protocol.c",
     "src/cursor-shape-v1-protocol.c",
     "src/fractional-scale-v1-protocol.c",
     "src/frog-color-management-v1-protocol.c",

@@ -3,5 +3,4 @@
 
 /_tmp/
 .zig-cache/
-zig-cache/
 zig-out/

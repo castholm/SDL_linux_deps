@@ -9,13 +9,13 @@ ALSA_LIB_URL=https://github.com/alsa-project/alsa-lib.git
 ALSA_LIB_REV=785fd327ada6fc1778a2bb21176cb66705eb6b33 # v1.2.13
 
 DBUS_URL=https://gitlab.freedesktop.org/dbus/dbus.git
-DBUS_REV=69e79b896a48ede68fb67b34719656a231c0647b # dbus-1.16.0
+DBUS_REV=958bf9db2100553bcd2fe2a854e1ebb42e886054 # dbus-1.16.2
 
 DRM_URL=https://gitlab.freedesktop.org/mesa/drm.git
 DRM_REV=38ec7dbd4df3141441afafe5ac62dfc9df36a77e # libdrm-2.4.124
 
 GLIB_URL=https://gitlab.gnome.org/GNOME/glib.git
-GLIB_REV=ca20e4ac71864f08e980dc044ac96c06d5482b37 # 2.82.4
+GLIB_REV=4fc67fd461bfbf13c32579690f6280b0d0d0350d # 2.82.5
 
 IBUS_URL=https://github.com/ibus/ibus.git
 IBUS_REV=baeddb89a78d7ebb9eea384a07ea1af8bfa76e41 # 1.5.31
@@ -27,13 +27,13 @@ LIBDECOR_URL=https://gitlab.freedesktop.org/libdecor/libdecor.git
 LIBDECOR_REV=7807ae3480f5c6a37c5e8505d94af1e764aaf704 # 0.2.2
 
 LIBURING_URL=https://github.com/axboe/liburing.git
-LIBURING_REV=80272cbeb42bcd0b39a75685a50b0009b77cd380 # liburing-2.8
+LIBURING_REV=08468cc3830185c75f9e7edefd88aa01e5c2f8ab # liburing-2.9
 
 LIBUSB_URL=https://github.com/libusb/libusb.git
 LIBUSB_REV=d52e355daa09f17ce64819122cb067b8a2ee0d4b # v1.0.27
 
 LIBX11_URL=https://gitlab.freedesktop.org/xorg/lib/libx11.git
-LIBX11_REV=ed9fb5535efe1e5278654b6b3994a34337b4bf1a # libX11-1.8.10
+LIBX11_REV=23f0352eca362515d598bfdbd8ecec070dcd1b28 # libX11-1.8.11
 
 LIBXCB_URL=https://gitlab.freedesktop.org/xorg/lib/libxcb.git
 LIBXCB_REV=622152ee42a310876f10602601206954b8d0613e # libxcb-1.17.0
@@ -51,7 +51,7 @@ LIBXI_URL=https://gitlab.freedesktop.org/xorg/lib/libxi.git
 LIBXI_REV=3c2d5aedd7708c75710b39268631762de904c304 # libXi-1.8.2
 
 LIBXKBCOMMON_URL=https://github.com/xkbcommon/libxkbcommon.git
-LIBXKBCOMMON_REV=7a31e3585edf78be281559377e26d15f8c4bc655 # xkbcommon-1.7.0
+LIBXKBCOMMON_REV=76740e0c4583ae49675e7ba8213d31ee09aa00d2 # xkbcommon-1.8.0
 
 LIBXRANDR_URL=https://gitlab.freedesktop.org/xorg/lib/libxrandr.git
 LIBXRANDR_REV=512bf0b15b5597c721ff8c61083616ca9040fa72 # libXrandr-1.5.4
@@ -63,7 +63,7 @@ LIBXSCRNSAVER_URL=https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver.git
 LIBXSCRNSAVER_REV=34f3f72b88c0a0a10d618e9dfbc88474ae5ce880 # libXScrnSaver-1.2.4
 
 MESA_URL=https://gitlab.freedesktop.org/mesa/mesa.git
-MESA_REV=e3b1a93aaa1d219014e715ea8a25a249ee2b6089 # mesa-24.3.2
+MESA_REV=4fa244fddfebb21378042556862e197284ef65ac # mesa-25.0.0
 
 PIPEWIRE_URL=https://gitlab.freedesktop.org/pipewire/pipewire.git
 PIPEWIRE_REV=cc7439187f61dd73b81ca69f5dbccbb52ce970b2 # 1.2.7
@@ -72,13 +72,13 @@ PULSEAUDIO_URL=https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git
 PULSEAUDIO_REV=1f020889c9aa44ea0f63d7222e8c2b62c3f45f68 # v17.0
 
 SDL_URL=https://github.com/libsdl-org/SDL.git
-SDL_REV=22422f7748d5128135995ed34c8f8012861c7332 # preview-3.1.8
+SDL_REV=f6864924f76e1a0b4abaefc76ae2ed22b1a8916e # release-3.2.8
 
 SNDIO_URL=https://github.com/ratchov/sndio.git
 SNDIO_REV=366b5c84d57c9ce73387c51ca48755d36e3fe3a7 # v1.10.0
 
 SYSTEMD_URL=https://github.com/systemd/systemd.git
-SYSTEMD_REV=47eea9ee9f46537bc18d6a64fa21fd9c50538e13 # v257.1
+SYSTEMD_REV=876ee10e0eb4bbb0920bdab7817a9f06cc34910f # v257.3
 
 WAYLAND_URL=https://gitlab.freedesktop.org/wayland/wayland.git
 WAYLAND_REV=a9fec8dd65977c57f4039ced34327204d9b9d779 # 1.23.1
@@ -172,6 +172,7 @@ wayland() {
 
 	# Prefer SDL's vendored protocols over their canonical counterparts
 	generate "$SDL_DIR/wayland-protocols/alpha-modifier-v1.xml"
+	generate "$SDL_DIR/wayland-protocols/color-management-v1.xml"
 	generate "$SDL_DIR/wayland-protocols/cursor-shape-v1.xml"
 	generate "$SDL_DIR/wayland-protocols/fractional-scale-v1.xml"
 	generate "$SDL_DIR/wayland-protocols/frog-color-management-v1.xml"
@@ -199,6 +200,7 @@ wayland() {
 		pub const wayland_egl_soname = "libwayland-egl.so.1";
 		pub const wayland_c_files = .{
 		    "src/alpha-modifier-v1-protocol.c",
+		    "src/color-management-v1-protocol.c",
 		    "src/cursor-shape-v1-protocol.c",
 		    "src/fractional-scale-v1-protocol.c",
 		    "src/frog-color-management-v1-protocol.c",
@@ -763,7 +765,7 @@ liburing() {
 	EOF
 	# REUSE-IgnoreEnd
 
-	version=2.8
+	version=2.9
 	version_parts=(${version//./ })
 	mkdir -p include/liburing
 	# REUSE-IgnoreStart
@@ -804,7 +806,7 @@ core() {
 	)
 	repo_copy DBUS "${headers[@]}" include/dbus
 
-	version=1.16.0
+	version=1.16.2
 	version_parts=(${version//./ })
 	mkdir -p include/x86_64-linux-gnu/dbus
 	sed "$DBUS_DIR/dbus/dbus-arch-deps.h.in" \
@@ -980,7 +982,7 @@ core() {
 	)
 	repo_copy GLIB "${headers[@]}" include/glib/deprecated
 
-	version=2.82.4
+	version=2.82.5
 	version_parts=(${version//./ })
 	mkdir -p include/x86_64-linux-gnu
 	sed "$GLIB_DIR/glib/glibconfig.h.in" \
